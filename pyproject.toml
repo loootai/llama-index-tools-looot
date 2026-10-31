@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling==1.32.4"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llama-index-tools-looot"
+version = "0.1.0"
+description = "LlamaIndex tool spec for the looot API: search a catalog of 4,200+ data APIs, inspect the price, run, and check the balance."
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "looot" }]
+keywords = ["llama-index", "llamaindex", "looot", "tools", "agents", "enrichment", "serp", "email"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "llama-index-core>=0.13.0,<0.15",
+  "httpx>=0.28.1,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1", "build==1.6.1"]
+
+[project.urls]
+Homepage = "https://looot.ai"
+Documentation = "https://docs.looot.ai"
+Source = "https://github.com/loootai/llama-index-tools-looot"
+
+# No __init__.py in llama_index/ or llama_index/tools/: both are namespace packages shared
+# with llama-index-core and the other llama-index-tools-* packages.
+[tool.hatch.build.targets.sdist]
+include = ["llama_index/", "README.md", "LICENSE"]
+
+[tool.hatch.build.targets.wheel]
+include = ["llama_index/"]
+
+[tool.llamahub]
+contains_example = false
+import_path = "llama_index.tools.looot"
+
+[tool.llamahub.class_authors]
+LoootToolSpec = "loootai"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

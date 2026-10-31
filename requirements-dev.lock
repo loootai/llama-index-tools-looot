@@ -1,0 +1,6 @@
+# Versions the tests and the wheel were built with.
+llama-index-core==0.14.25
+httpx==0.28.1
+pytest==9.1.1
+build==1.6.1
+hatchling==1.32.4
